@@ -4,5 +4,12 @@
 ## Running
 
 ```sh
-cargo run -p day-..
+cargo test -p day-x
+cargo run --release -p day-x
+```
+
+## Creating
+
+```sh
+cargo generate --path template --name day-x
 ```
