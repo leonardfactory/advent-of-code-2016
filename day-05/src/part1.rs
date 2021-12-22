@@ -22,6 +22,6 @@ pub mod tests {
 
     #[test]
     fn test_example() {
-        // assert_eq!(find_door_password("abc"), "18f47a30");
+        assert_eq!(find_door_password("abc"), "18f47a30");
     }
 }
