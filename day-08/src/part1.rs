@@ -33,12 +33,12 @@ pub fn update_screen(input: &str) -> usize {
         }
 
         // Well, this is part two.. lol.
-        for y in 0..HEIGHT {
+        (0..HEIGHT).for_each(|y| {
             for x in 0..WIDTH {
                 print!("{}", if screen[y][x] == 0 { '.' } else { '#' })
             }
             println!();
-        }
+        });
     }
     screen.iter().flat_map(|row| row.iter()).sum::<u8>() as usize
 }
@@ -53,12 +53,12 @@ pub enum Instruction {
 impl Instruction {
     pub fn parse(input: &str) -> Self {
         lazy_static! {
-            static ref instruction_re: Regex =
+            static ref INSTRUCTION_RE: Regex =
                 Regex::new(r"(rect|rotate row|rotate column) (?:(\d+)x(\d+)|\w=(\d+) by (\d+))")
                     .unwrap();
         }
 
-        let captures = instruction_re.captures(input).map(|captures| {
+        let captures = INSTRUCTION_RE.captures(input).map(|captures| {
             captures
                 .iter()
                 .skip(1)
